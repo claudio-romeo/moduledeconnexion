@@ -1,0 +1,15 @@
+nav {
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.listindex {
+    display: flex;
+   
+    gap: 5vh;
+}
+
+ul{
+    list-style: none;
+}
