@@ -1,27 +1,29 @@
 <!DOCTYPE html>
 <html lang="Fr">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css"  />
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css" />
+  <?php
+  include("link.php") ?>
 
-    <title>Document</title>
+  <title>Profil</title>
 </head>
+
 <body>
+  <?php
+  include("header.php") ?>
 
-<header>
-    <nav class="entete">
-    <ul>
-    <li><a href="index.php">Accueil</a></li>
-    <li><a href="inscription.php">inscription</a></li>
-    <li><a href="connexion.php">connexion</a></li>
-    <li><a href="profil.php">profil</a></li>
-  
-  </ul>
+  <main>
+    <P>
+      Je suis une page de profil
 
-
-    </nav>
-</header>
+    </P>
+  </main>
+  <?php
+  include("footer.php") ?>
 </body>
+
 </html>
