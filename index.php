@@ -1,6 +1,6 @@
 
 <?php 
-include("bdd.phpinfo")
+include("bdd.php")
 ?>
 
 <!DOCTYPE html>

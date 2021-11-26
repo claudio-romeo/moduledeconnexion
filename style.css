@@ -1,3 +1,11 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+
+/* ******************************************************INDEX**************************************** */
+
 nav {
     display: flex;
     justify-content: space-between;
@@ -13,3 +21,20 @@ nav {
 ul{
     list-style: none;
 }
+
+/* *********************************************************INSCRIPTION**************************************** */
+
+form#bas {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 0em;
+    background-color: blueviolet;
+}
+
+
+
+/* *********************************************FOOTER******************************************* */
+
+
