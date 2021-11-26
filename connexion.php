@@ -1,9 +1,18 @@
+
+<?php 
+$bdd = mysqli_connect('localhost' , 'root','','moduleconnexion');
+mysqli_set_charset($bdd, 'utf8');
+?>
+
+
+
 <html>
 
 <head>
     <meta charset="utf-8">
     <!-- importer le fichier de style -->
     <link rel="stylesheet" href="style.css" />
+
     <?php
     include("link.php")
     ?>

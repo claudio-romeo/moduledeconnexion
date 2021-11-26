@@ -1,3 +1,8 @@
+<?php 
+$bdd = mysqli_connect('localhost' , 'root','','moduleconnexion');
+mysqli_set_charset($bdd, 'utf8');
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,7 +21,16 @@ include("header.php")
 ?>
 
 <body>
-    <p>Je suis la page d'inscription</p>
+<form id="bas">
+    <table>
+            <input placeholder="Nom">
+            <input placeholder="Prenom">
+            <input placeholder="Password">
+            <input placeholder="Confirmé votre Pass">
+            <input placeholder="Email">
+         <button type = "submit">Envoyer</button>
+         </table>
+        </form>
 </body>
 
 <?php
