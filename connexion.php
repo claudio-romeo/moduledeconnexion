@@ -1,11 +1,8 @@
 
 <?php 
-$bdd = mysqli_connect('localhost' , 'root','','moduleconnexion');
-mysqli_set_charset($bdd, 'utf8');
+include("bdd.phpinfo")
+
 ?>
-
-
-
 <html>
 
 <head>

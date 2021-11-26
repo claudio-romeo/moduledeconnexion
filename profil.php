@@ -1,3 +1,7 @@
+<?php 
+include("bdd.phpinfo")
+?>
+
 <!DOCTYPE html>
 <html lang="Fr">
 
