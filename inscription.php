@@ -19,9 +19,16 @@ if(isset($_POST['forminscription']))
             $passlength = strlen($_POST['pass']);
                 if ($passlength < 7)
             {
-                echo 'Votre PASSWORD doit être supérieur ou égal a 7 caractére !';
+                $erreur= 'Votre PASSWORD doit être supérieur ou égal a 7 caractére !';
             }
-            
+            if ($pass == $pass2)
+            { 
+        
+                
+            }
+            else {
+               $erreur = 'Vos password ne correspondent pas ! ';
+            }
           
             
 
