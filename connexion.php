@@ -1,6 +1,53 @@
 
 <?php 
-include("bdd.php")
+
+include("bdd.php");
+var_dump($_POST);
+//si le formaulaire est fournis alors 
+if(isset($_POST['entrer']))
+{
+  if (!empty($_POST['login']) && !empty($_POST['pass']))
+    {
+        $login_entree=htmlspecialchars($_POST['login']);
+        $pass_entree=($_POST['pass']);
+        echo $login_entree;
+        $requete_connect =mysqli_query($bdd,"SELECT * FROM utilisateurs WHERE login='$login_entree' ");
+        $tableau=mysqli_fetch_assoc($requete_connect);
+        $userexist = $requete_connect ;
+        
+        if(isset($tableau['login']))
+        {
+        echo $tableau['login'];
+        var_dump($tableau);
+        }
+
+        if(isset($tableau['login']) && $tableau['login']==$login_entree)
+        {
+            echo '<br>'.'login ok';         
+            $_pass= $tableau['password'];
+
+            if(password_verify($pass_entree,$_pass)==TRUE)
+            {
+            echo 'ok c est le bon pass';
+            $_SESSION['id']= $tableau['id'];
+            $_SESSION['login']= $tableau['login'];
+            header("location: profil.php?id=".$_SESSION['id']);
+
+            }
+            else
+            $erreur = 'Mauvais mot de pass';
+        }
+        else 
+        {
+        $erreur = 'login invalide';
+        }
+    }
+  else 
+    {
+      $erreur = "Les informations ne sont pas corrects !";
+       
+    }    
+}
 
 ?>
 <html>
@@ -17,7 +64,9 @@ include("bdd.php")
 </head>
 
 <?php
-include("header.php") ?>
+include("header.php"); 
+
+?>
 
 <body>
 
@@ -27,19 +76,19 @@ include("header.php") ?>
         <form action="connexion.php" method="POST">
             <h1>Connexion</h1>
 
-            <label><b>Nom d'utilisateur</b></label>
-            <input type="text" placeholder="Entrer le nom d'utilisateur" name="username" required>
+            <label><b>Login d'utilisateur</b></label>
+            <input type="text" placeholder="Entrer le Login d'utilisateur" name="login" >
 
             <label><b>Mot de passe</b></label>
-            <input type="password" placeholder="Entrer le mot de passe" name="password" required>
+            <input type="password" placeholder="Entrer le mot de passe" name="pass" >
 
-            <input type="submit" id='submit' value='LOGIN'>
+            <input type="submit" id='submit' name ="entrer"value='LOGIN'>
             <?php
-            if (isset($_GET['erreur'])) {
-                $err = $_GET['erreur'];
-                if ($err == 1 || $err == 2)
-                    echo "<p style='color:red'>Utilisateur ou mot de passe incorrect</p>";
-            }
+             if(isset($erreur))
+             {
+                 echo '<font color="red"> '.$erreur.'</font>';
+             }
+        
             ?>
         </form>
     </div>

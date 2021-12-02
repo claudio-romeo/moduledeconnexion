@@ -1,7 +1,10 @@
 
 <?php 
-include("bdd.php")
+include("bdd.php"); 
+
 ?>
+
+
 
 <!DOCTYPE html>
 

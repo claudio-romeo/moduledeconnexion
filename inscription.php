@@ -1,43 +1,48 @@
 <?php 
 include("bdd.php"); /* ceci est la base de donné*/
+
+// Si le formulaire est soumis alors 
 if(isset($_POST['forminscription'])) 
 {
-    if (empty($_POST['nom']) AND empty($_POST['prenom ']) AND empty($_POST['pass']) AND empty($_POST['pass2']) AND empty($_POST['email']))
-        {    $erreur = 'TOUT LES CHAMPS DOIVENT ETRE REMPLIE !';
-      
-         }
-         else {
-           
-           include("bdd.php");
-            $nom = htmlspecialchars( $_POST['nom']);
-            $prenom = htmlspecialchars( $_POST['prenom']);
-            $pass =sha1( $_POST['pass']);
-            $pass2 =sha1( $_POST['pass2']);
-            $email =htmlspecialchars( $_POST['email']);
+    //si les champs son differents de vide alors 
+    if (!empty($_POST['nom']) && !empty($_POST['prenom']) && !empty($_POST['pass']) && !empty($_POST['pass2']) && !empty($_POST['login']))
+    {
+        // si le mot de passe correspond a la confirmation alors 
+        if($_POST['pass']===$_POST['pass2'])
+        {
+            // on fait une requete en bdd qui va compter le nombre de login correspondant a ce que a a rentrer l'utilisateur
 
-
-            $passlength = strlen($_POST['pass']);
-                if ($passlength < 7)
-            {
-                $erreur= 'Votre PASSWORD doit être supérieur ou égal a 7 caractére !';
-            }
-            if ($pass == $pass2)
-            { 
+            $requete =mysqli_query($bdd, "SELECT COUNT(*) FROM `utilisateurs` WHERE login = '$_POST[login]'");
+            $result = mysqli_fetch_assoc($requete);
         
-                
-            }
+            // si le resultat de la requete est de 1 alors le login existe en bdd et on affiche un message d'erreur
+            if($result['COUNT(*)']== 1)
+                {
+                $erreur="login non disponible ! ";
+                }
+                // sinon on inscrit en bdd 
             else {
-               $erreur = 'Vos password ne correspondent pas ! ';
-            }
-          
-            
+                $login= htmlspecialchars($_POST['login']);
+                $nom= htmlspecialchars($_POST['nom']);
+                $prenom= htmlspecialchars($_POST['prenom']);
+                $pass= password_hash($_POST['pass'], PASSWORD_DEFAULT);
 
+               $requete_insert= mysqli_query($bdd, "INSERT INTO `utilisateurs`(`id`,`Login`, `prenom`, `nom`, `password`) VALUES (NULL,'$login','$prenom', '$nom', '$pass')");
 
-           $requete = mysqli_query($bdd , "INSERT INTO `utilisateurs` (`id`, `Login`, `prenom`, `nom`, `password`) VALUES (NULL, '$nom', '$prenom', '$pass', '$email');" );
-         }
-
-
+               // une fois finaiser redirection
+               header('location: connexion.php');
+                }
+        } 
+        else {
+            $erreur ="Vos password ne correspondent pas !";
+        }
+    }   
+    else {
+        $erreur= "Veuillez remplir les champs demandés";
+    }
 }
+
+
 ?>
 
 
@@ -64,7 +69,7 @@ include("header.php")
 </header>
 <main>
 <div class="center">
-<form id="bas" method="POST" action="">
+<form id="bas" method="post" action="">
 <h2>inscription</h2>
 <table>
 
@@ -74,6 +79,8 @@ include("header.php")
         echo '<font color="red"> '.$erreur.'</font>';
     }
     ?>
+     <label for="login">Votre Login :</label>
+        <input type="text" placeholder="Login" id="login"  name="login"> <br>
     
         <label for="nom">Votre nom :</label>
         <input type="text" placeholder="Nom" id="nom"  name="nom"> <br>
@@ -87,8 +94,7 @@ include("header.php")
         <label for="pass2">Confirmer votre mot de passe :</label>
         <input type="password" placeholder="Confirmer votre mot de pass" id="pass2"  name="pass2"> <br>
 
-        <label for="mail">Votre email :</label>
-        <input type="email" placeholder="Email" id="email"  name="email"> <br>
+       
         
         <button type = "submit" name="forminscription">Envoyer</button>
         </table>
