@@ -33,7 +33,8 @@ if(isset($_POST['forminscription']))
                header('location: connexion.php');
                 }
         } 
-        else {
+        else
+        {
             $erreur ="Vos password ne correspondent pas !";
         }
     }   

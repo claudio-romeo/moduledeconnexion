@@ -3,7 +3,6 @@ include("bdd.php");
 
 if (isset($_GET['id']) && $_GET['id'] > 0)
 {
-var_dump($_GET);
 $login_profil=htmlspecialchars($_GET['id']);
 $getid = intval($_GET['id']);
 $requete_profil =mysqli_query($bdd,"SELECT * FROM utilisateurs WHERE login='$login_profil' ");

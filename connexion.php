@@ -2,7 +2,6 @@
 <?php 
 
 include("bdd.php");
-var_dump($_POST);
 //si le formaulaire est fournis alors 
 if(isset($_POST['entrer']))
 {
@@ -18,7 +17,7 @@ if(isset($_POST['entrer']))
         if(isset($tableau['login']))
         {
         echo $tableau['login'];
-        var_dump($tableau);
+        
         }
 
         if(isset($tableau['login']) && $tableau['login']==$login_entree)
@@ -31,6 +30,8 @@ if(isset($_POST['entrer']))
             echo 'ok c est le bon pass';
             $_SESSION['id']= $tableau['id'];
             $_SESSION['login']= $tableau['login'];
+            $_SESSION['nom']= $tableau['nom'];
+            $_SESSION['prenom']= $tableau['prenom'];
             header("location: profil.php?id=".$_SESSION['id']);
 
             }

@@ -1,11 +1,73 @@
 <?php 
 include("bdd.php");
+// si on est connecté 
+if (isset($_SESSION['login'])) 
+{
+    // alors on met le login dans une variable 
+    $login_entree=$_SESSION['login'];
+    // Je vais recuperer les informations de la personne connecter 
+    // $requete_connect =mysqli_query($bdd,"SELECT * FROM utilisateurs WHERE login='$login_entree' ");
+    // $result= mysqli_fetch_assoc($requete_connect);var_dump(($result));
+      $nom=$_SESSION['nom'];
+    $prenom=$_SESSION['prenom'];
 
-if (isset($_SESSION['id']))
+}
+
+else {
+    header('Location: index.php');
+
+}
+// exit();
+    
+    
+  
+
+
+
+
+if(isset($_POST['soumis'])) 
 {
     
+    if($_POST['pass'] == $_POST['pass2'])
+
+    {
+        $newlogin= htmlspecialchars($_POST['newlogin']);
+        $newnom= htmlspecialchars($_POST['newnom']);
+        $newprenom= htmlspecialchars($_POST['newprenom']);
+        $newpass= password_hash($_POST['pass'], PASSWORD_DEFAULT);
 
 
+        $requete =mysqli_query($bdd, "SELECT COUNT(*) FROM `utilisateurs` WHERE login = '$newlogin'");
+         $result = mysqli_fetch_all($requete);
+        $count= count($result);
+        var_dump($result);
+        var_dump($count);
+
+
+        if($count == 1)
+        {
+       echo $erreur="login non disponible ! ";
+        }
+
+        else 
+        {
+         
+    
+            $requete_insert= mysqli_query($bdd, "UPDATE `utilisateurs` SET `id`,`login`,`prenom`,`nom`,`password` VALUE ( NULL, '$newlogin','$newprenom', '$newnom', '$newpass' ) ");
+
+            // header('location: profil.php?id='.$_SESSION['id']);
+        }
+        
+
+    }
+        else 
+        
+        {
+            echo $erreur= "Erreur de saisie";
+        }
+        
+   
+}
 
 
 ?>
@@ -30,11 +92,31 @@ include("header.php")
 
 echo $_SESSION['login']; ?></h2>
 
+<form action="" method="POST">
+    <table>
+        </table>
+        <input type="text" name="newlogin" placeholder="Modifier votre login" value="
+        <?php echo $login_entree;?>"/><br>
+        <input type="text" name="newnom" placeholder="modifier votre nom" value="
+        <?php echo $nom;?>"
+        /><br>
+        <input type="text" name="newprenom" placeholder="modifier votre prenom" value="
+        <?php echo $prenom;?>"/><br>
+        <input type="password" name="pass" placeholder="Nouveau Password"/><br>
+        <input type="password" name="pass2" placeholder="verifier votre password"/><br>
+        <input type="submit" name="soumis" value=" Mettre vos informations a jour">
+        <?php 
+        if(isset($erreur))
+             {
+                 echo '<font color="red"> '.$erreur.'</font>';
+             }
+        
+            ?>
+
+</form>
+
 <?php
         include("footer.php")
         ?>
 </body>
 </html>
-<?php
-}
-?>
