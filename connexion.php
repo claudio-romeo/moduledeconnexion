@@ -32,6 +32,7 @@ if(isset($_POST['entrer']))
             $_SESSION['login']= $tableau['login'];
             $_SESSION['nom']= $tableau['nom'];
             $_SESSION['prenom']= $tableau['prenom'];
+            $_SESSION['password']= $tableau['password'];
             header("location: profil.php?id=".$_SESSION['id']);
 
             }

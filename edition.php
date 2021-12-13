@@ -44,18 +44,26 @@ if(isset($_POST['soumis']))
         var_dump($count);
 
 
-        if($count == 1)
+        if($result[0][0] == 1 && $_POST['newlogin'] !=$login_entree)
         {
        echo $erreur="login non disponible ! ";
         }
 
         else 
         {
-         
+            
     
-            $requete_insert= mysqli_query($bdd, "UPDATE `utilisateurs` SET `id`,`login`,`prenom`,`nom`,`password` VALUE ( NULL, '$newlogin','$newprenom', '$newnom', '$newpass' ) ");
+            $requete_insert= mysqli_query($bdd, "UPDATE `utilisateurs` SET `login`= '$newlogin',`prenom`= '$newprenom',`nom`= '$newnom',`password`= '$newpass'where login = '$login_entree'");
+        
+            $_SESSION['login']= $newlogin;
+            $_SESSION['nom']= $newnom;
+            $_SESSION['prenom']= $newprenom;
+            $_SESSION['password']= $newpass;
+            var_dump($_SESSION);
 
-            // header('location: profil.php?id='.$_SESSION['id']);
+            echo "UPDATE `utilisateurs` SET `login`= '$newlogin',`prenom`= '$newprenom',`nom`= '$newnom',`password`= '$newpass'where login = '$login_entree'";
+
+            header('location: profil.php?id='.$_SESSION['id']);
         }
         
 
@@ -95,13 +103,10 @@ echo $_SESSION['login']; ?></h2>
 <form action="" method="POST">
     <table>
         </table>
-        <input type="text" name="newlogin" placeholder="Modifier votre login" value="
-        <?php echo $login_entree;?>"/><br>
-        <input type="text" name="newnom" placeholder="modifier votre nom" value="
-        <?php echo $nom;?>"
+        <input type="text" name="newlogin" placeholder="Modifier votre login" value="<?php echo $login_entree;?>"/><br>
+        <input type="text" name="newnom" placeholder="modifier votre nom" value="<?php echo $nom;?>"
         /><br>
-        <input type="text" name="newprenom" placeholder="modifier votre prenom" value="
-        <?php echo $prenom;?>"/><br>
+        <input type="text" name="newprenom" placeholder="modifier votre prenom" value="<?php echo $prenom;?>"/><br>
         <input type="password" name="pass" placeholder="Nouveau Password"/><br>
         <input type="password" name="pass2" placeholder="verifier votre password"/><br>
         <input type="submit" name="soumis" value=" Mettre vos informations a jour">
