@@ -1,14 +1,15 @@
 <?php 
 include("bdd.php");
+$requete = mysqli_query($bdd, "SELECT * FROM utilisateurs ORDER BY id DESC " );
+$result = mysqli_fetch_all($requete);
 
-$requete =mysqli_query($bdd, "SELECT * FROM utilisateurs ORDER BY id DESC LIMIT " );
-
+var_dump($result);
 ?>
 
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
+<head> 
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,12 +17,16 @@ $requete =mysqli_query($bdd, "SELECT * FROM utilisateurs ORDER BY id DESC LIMIT 
 </head>
 <body>
     
+
 <ul>
+<?php 
+    foreach($result as $key => $value)
+    {
+        echo "<li> $value[1] $value[2] $value[3] </li>";
+    }
+?>
 
-
-    <li>
-       
-    </li>
+  
 </ul>
 </body>
 </html>
