@@ -3,7 +3,7 @@ include("bdd.php");
 $requete = mysqli_query($bdd, "SELECT * FROM utilisateurs ORDER BY id DESC " );
 $result = mysqli_fetch_all($requete);
 
-var_dump($result);
+
 ?>
 
 

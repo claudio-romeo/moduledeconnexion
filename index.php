@@ -21,25 +21,29 @@ include("bdd.php");
 
   <title>Accueil</title>
 </head>
+<header><?php
+    include("header.php");
+   ?></header>
 
 <body>
-<?php
-    include("header.php");
-   ?>
+
   <main>
 
   
 
-    <H1>Module de connexion</H1>
+    <H1 class="titre">Module de connexion</H1>
 
     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium dicta placeat facilis in saepe omnis libero reprehenderit repellat nemo dolores, amet reiciendis voluptates at magnam nobis consequatur molestiae quae, dolorum soluta! Officia sed exercitationem ratione distinctio, laboriosam libero harum similique corporis, voluptatem molestias, velit amet ad a vitae eum nesciunt.
     </p>
   </main>
+
+
+</body>
+<footer>
 <?php 
   include("footer.php")
   ?>
-
-</body>
+  </footer>
 
 </html>
 
