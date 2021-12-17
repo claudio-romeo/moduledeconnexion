@@ -34,7 +34,7 @@ include("bdd.php");
 
     <H1 class="titre">Module de connexion</H1>
 
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium dicta placeat facilis in saepe omnis libero reprehenderit repellat nemo dolores, amet reiciendis voluptates at magnam nobis consequatur molestiae quae, dolorum soluta! Officia sed exercitationem ratione distinctio, laboriosam libero harum similique corporis, voluptatem molestias, velit amet ad a vitae eum nesciunt.
+    <p class="presentation">Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium dicta placeat facilis in saepe omnis libero reprehenderit repellat nemo dolores, amet reiciendis voluptates at magnam nobis consequatur molestiae quae, dolorum soluta! Officia sed exercitationem ratione distinctio, laboriosam libero harum similique corporis, voluptatem molestias, velit amet ad a vitae eum nesciunt.
     </p>
   </main>
 

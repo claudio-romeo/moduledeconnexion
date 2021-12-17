@@ -66,8 +66,9 @@ if (isset($_POST['forminscription'])) {
     <div class="container">
         <main id="formu_inscription">
             <div class="center">
+                <h2 class="inscription">inscription</h2>
                 <form id="bas" method="post" action="">
-                    <h2>inscription</h2>
+
                     <table>
 
                         <?php
@@ -90,32 +91,37 @@ if (isset($_POST['forminscription'])) {
                         </div>
 
                         <div class="form-group">
-                           
-                                <tr>  <td><label for="prenom">Votre prenom :</label>
-                            </td>
-                            <td> <input type="text" placeholder="Prenom" id="prenom" name="prenom"> <br></td>
+
+                            <tr>
+                                <td><label for="prenom">Votre prenom :</label>
+                                </td>
+                                <td> <input type="text" placeholder="Prenom" id="prenom" name="prenom"> <br></td>
                             </tr>
                         </div>
 
                         <div class="form-group">
-                           
-                                <tr> <td> <label for="pass">Votre mot de passe :</label>
-                            </td>
-                            <td> <input type="password" placeholder="Mot de pass" id="pass" name="pass"> <br></tr>
+
+                            <tr>
+                                <td> <label for="pass">Votre mot de passe :</label>
+                                </td>
+                                <td> <input type="password" placeholder="Mot de pass" id="pass" name="pass"> <br>
+                            </tr>
                         </div>
 
                         <div class="form-group">
-                            
-                                <tr>
-                                 <td>   <label for="pass2">Confirmer votre mot de passe :</label>
-                            </td>
-                            <td><input type="password" placeholder="Confirmer votre mot de pass" id="pass2" name="pass2"> <br></td>
+
+                            <tr>
+                                <td> <label for="pass2">Confirmer votre mot de passe :</label>
+                                </td>
+                                <td><input type="password" placeholder="Confirmer votre mot de pass" id="pass2" name="pass2"> <br></td>
                             </tr>
                         </div>
 
 
 
-                        <tr><td><button class="btn btn-primary " type="submit" name="forminscription">Envoyer</button></td></tr>
+                        <tr>
+                            <td><button class="btn btn-primary " type="submit" name="forminscription">Envoyer</button></td>
+                        </tr>
                     </table>
                 </form>
 

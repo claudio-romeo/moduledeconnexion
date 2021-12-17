@@ -101,9 +101,9 @@ include("header.php")
 
 echo $_SESSION['login']; ?></h2>
 
-<form action="" method="POST">
-    <table>
-        </table>
+<form action="" method="POST" class="profil_tab">
+    <table >
+        
         <input type="text" name="newlogin" placeholder="Modifier votre login" value="<?php echo $login_entree;?>"/><br>
         <input type="text" name="newnom" placeholder="modifier votre nom" value="<?php echo $nom;?>"
         /><br>
@@ -118,11 +118,10 @@ echo $_SESSION['login']; ?></h2>
              }
         
             ?>
-
+</table>
 </form>
 
-<?php
-        include("footer.php")
-        ?>
+<footer> <?php
+            include("footer.php"); ?></footer>
 </body>
 </html>

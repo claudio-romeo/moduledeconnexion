@@ -94,8 +94,8 @@ include("header.php");
             ?>
         </form>
     </div>
-    <?php
-    include("footer.php") ?>
+    <footer> <?php
+            include("footer.php"); ?></footer>
 </body>
 
 </html>
