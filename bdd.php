@@ -1,7 +1,7 @@
 
 <?php 
 session_start();
-$bdd = mysqli_connect('localhost' , 'root','','moduleconnexion');
+$bdd = mysqli_connect('localhost' , 'root','','claudio-romeo-moduleconnexion');
 mysqli_set_charset($bdd, 'utf8');
 ?>
 
